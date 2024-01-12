@@ -7,9 +7,7 @@ public class Main {
         int clientOS = 1;
         int clientDeviceYear = 2017;
         checkVersion(clientOS, clientDeviceYear);
-        int deliveryDistance = 95;
-        int days = 1;
-        calculateDeliveryDays(deliveryDistance, days);
+        printDeliveryDays(95);
     }
     public static void checkYear(int year) {
         System.out.println("Задача 1");
@@ -42,21 +40,29 @@ public class Main {
         }
     }
 
-    public static void calculateDeliveryDays(int deliveryDistance, int days) {
-        System.out.println("Задача 3");
+    public static int calculateDeliveryDays(int deliveryDistance) {
         if (deliveryDistance < 20) {
-            System.out.println("Потребуется дней: " + days);
+            return 1;
         }
         else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            System.out.println("Потребуется дней: " + (days + 1));
+            return 2;
         }
         else if (deliveryDistance > 60 && deliveryDistance < 100) {
-            System.out.println("Потребуется дней: " + (days + 2));
+            return 3;
         }
         else if (deliveryDistance >= 100) {
+            return -1;
+        }
+        return deliveryDistance;
+    }
+    public static void printDeliveryDays (int deliveryDistance) {
+        System.out.println("Задача 3");
+        int days = calculateDeliveryDays(deliveryDistance);
+        if (days > 0) {
+            System.out.println("Потребуется дней: " + days);
+        }
+        else {
             System.out.println("Доставка не осуществляется");
         }
     }
-
-
 }
